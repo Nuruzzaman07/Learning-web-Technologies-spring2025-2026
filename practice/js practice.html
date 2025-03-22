@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Validation</title>
+</head>
+<body>
+    <h1 id="head">Login Page</h1>
+    
+    <form onsubmit="return validateLogin()">
+        <input type="text" id="username" name="username" placeholder="Enter Username" onblur="validateLogin()"/>
+        <br>
+        <input type="password" id="password" name="password" placeholder="Enter Password" onblur="validateLogin()"/>
+        <br>
+        <input type="submit" value="Login" />
+    </form>
+    
+    <p id="msg"></p>
+    
+    <script>
+        function validateLogin(){
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            let msg = document.getElementById('msg');
+            
+            let validUsername = "admin";
+            let validPassword = "12345";
+            
+            if(username =="" || password =="") {
+                msg.innerHTML = "Username and Password cannot be empty!";
+                msg.style.color = 'red';
+                return false;
+            } 
+            
+            if(username == validUsername && password == validPassword) {
+                msg.innerHTML = "Login successful!";
+                msg.style.color = 'green';
+                return true;
+            } else {
+                msg.innerHTML = "Invalid Username or Password!";
+                msg.style.color = 'red';
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
