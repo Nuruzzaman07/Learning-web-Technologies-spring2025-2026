@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <script defer src="script.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .error { color: red; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <h2>Degree Validation</h2>
+    
+    <fieldset>
+        <legend>Degree</legend>
+        <input type="checkbox" name="degree" value="SSC"> SSC
+        <input type="checkbox" name="degree" value="HSC"> HSC
+        <input type="checkbox" name="degree" value="BSc"> BSc
+        <span class="error" id="degreeError"></span>
+    </fieldset>
+    <br>
+    <button type="submit">Submit</button>
+    <script>
+        document.getElementById("submitBtn").addEventListener("click", function(event) {
+    let isValid = true;
+
+    let degrees = document.querySelectorAll('input[name="degree"]:checked');
+    let degreeError = document.getElementById("degreeError");
+
+    if (degrees.length === 0) {
+        degreeError.textContent = "Select at least one degree.";
+        isValid = false;
+    } else {
+        degreeError.textContent = "";
+    }
+        </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Validation</title>
+    <script defer src="script.js"></script>
+    
+</head>
+<body>
+    <h2>Name Validation</h2>
+    <form id="myForm">
+        <!-- Name Field -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <span class="error" id="nameError"></span>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+    let isValid = true;
+
+    let name = document.getElementById("name").value.trim();
+    let nameError = document.getElementById("nameError");
+
+    if (name === "") {
+        nameError.textContent = "Name cannot be empty.";
+        isValid = false;
+    } else if (!name.includes(" ")) {
+        nameError.textContent = "Name must contain at least two words.";
+        isValid = false;
+    } else if (!isNaN(name[0])) {
+        nameError.textContent = "Name must start with a letter.";
+        isValid = false;
+    } else {
+        nameError.textContent = "";
+    }
+        </script>
+</body>
+</html>

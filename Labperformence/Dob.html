@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Validation</title>
+    <script defer src="script.js"></script>
+    
+</head>
+<body>
+    <h2>Date of Birth Validation</h2>
+    <form>
+        <label for="dob">Date of Birth (dd-mm-yyyy):</label>
+        <input type="text" id="dob" name="dob">
+        <span class="error" id="dobError"></span>
+        <br><br>
+        <button type="submit">Submit</button>
+        </form>
+        <script>
+            document.getElementById("myForm").addEventListener("submit", function(event) {
+                let isValid = true;
+                let dob = document.getElementById("dob").value.trim();
+                
+    let dobError = document.getElementById("dobError");
+    let parts = dob.split("-");
+
+    if (dob === "") {
+        dobError.textContent = "Date of birth cannot be empty.";
+        isValid = false;
+    } else if (parts.length !== 3) {
+        dobError.textContent = "Enter date in dd-mm-yyyy format.";
+        isValid = false;
+    } else {
+        let day = parseInt(parts[0]);
+        let month = parseInt(parts[1]);
+        let year = parseInt(parts[2]);
+
+        if (isNaN(day) || isNaN(month) || isNaN(year)) {
+            dobError.textContent = "Date must contain numbers only.";
+            isValid = false;
+        } else if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1900 || year > 2016) {
+            dobError.textContent = "Enter a valid date (dd: 1-31, mm: 1-12, yyyy: 1900-2016).";
+            isValid = false;
+        } else {
+            dobError.textContent = "";
+        }
+    }
+
+            </script>
+            </body>
+            </html>

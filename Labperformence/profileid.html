@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profileid Validation</title>
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <h2>profilid Validation</h2>
+    <fieldset>
+        <legend>Profile Picture</legend>
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId">
+        <span class="error" id="userIdError"></span>
+        <br><br>
+
+        <label for="profilePicture">Picture:</label>
+        <input type="file" id="profilePicture">
+        <span class="error" id="pictureError"></span>
+    </fieldset>
+    <br>
+
+    <button type="submit" id="submitBtn">Submit</button>
+    <script>
+         document.getElementById("submitBtn").addEventListener("click", function(event) {
+            let isValid = true;
+            let userId = document.getElementById("userId").value.trim();
+    let userIdError = document.getElementById("userIdError");
+
+    if (userId === "") {
+        userIdError.textContent = "User ID cannot be empty.";
+        isValid = false;
+    } else if (isNaN(userId) || parseInt(userId) <= 0) {
+        userIdError.textContent = "User ID must be a positive number.";
+        isValid = false;
+    } else {
+        userIdError.textContent = "";
+    }
+    let picture = document.getElementById("picture").files.length;
+    let pictureError = document.getElementById("pictureError");
+
+    if (picture === 0) {
+        pictureError.textContent = "Upload a picture.";
+        isValid = false;
+    } else {
+        pictureError.textContent = "";
+    }
+
+    // Prevent form submission if validation fails
+    if (!isValid) {
+        event.preventDefault();
+    }
+});
+
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+    <script defer src="script.js"></script>
+    
+</head>
+<body>
+    <h2>Email Validation</h2>
+    <form>
+         <!-- Email Field -->
+         <label for="email">Email:</label>
+         <input type="text" id="email" name="email">
+         <span class="error" id="emailError"></span>
+         <br><br>
+         <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            let isValid = true;
+            let email = document.getElementById("email").value.trim();
+    let emailError = document.getElementById("emailError");
+
+    if (email === "") {
+        emailError.textContent = "Email cannot be empty.";
+        isValid = false;
+    } else if (!email.includes("@") || !email.includes(".")) {
+        emailError.textContent = "Enter a valid email ( user@example.com).";
+        isValid = false;
+    } else {
+        emailError.textContent = "";
+    }
+        </script>
+    </body>
+    </html>
